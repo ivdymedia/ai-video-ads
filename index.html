@@ -1,76 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>IVDY Media – AI Video Ads as a Service</title>
-  <!-- Link to the favicon -->
-  <link rel="icon" href="ivdy-media-logo-transparent.ico" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IVDY Media - AI Video Ads Service</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background-color: #000;
-      color: #fff;
+      padding: 0;
+      background-color: #fff; /* White background */
+      color: #333; /* Dark text color for readability */
       text-align: center;
     }
     header {
+      background-color: #0044cc; /* Dark blue header */
+      color: white;
       padding: 60px 20px;
-      background: linear-gradient(to right, #141e30, #243b55);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+    header img {
+      width: 50px; /* Adjust the size of the logo icon */
+      height: auto;
     }
     h1 {
+      margin: 0;
       font-size: 2.5em;
-      margin-bottom: 10px;
+    }
+    section {
+      padding: 40px 20px;
+      background-color: #f8f8f8; /* Light gray background for the content section */
+    }
+    h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
     }
     p {
       font-size: 1.2em;
     }
-    a.button {
-      display: inline-block;
-      margin: 20px 10px;
-      padding: 15px 25px;
-      background-color: #00cc99;
+    .button {
+      background-color: #0044cc;
       color: white;
+      padding: 15px 30px;
+      text-align: center;
+      display: inline-block;
+      margin-top: 20px;
+      border-radius: 5px;
       text-decoration: none;
       font-size: 1.1em;
-      border-radius: 8px;
-      transition: background 0.3s ease;
     }
-    a.button:hover {
-      background-color: #009977;
-    }
-    section {
-      padding: 40px 20px;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-      max-width: 600px;
-      margin: auto;
-    }
-    ul li {
-      font-size: 1.1em;
-      margin-bottom: 10px;
+    .button:hover {
+      background-color: #0033a0; /* Darker shade of blue on hover */
     }
     footer {
-      margin-top: 60px;
+      background-color: #333; /* Dark footer */
+      color: white;
       padding: 20px;
+      text-align: center;
       font-size: 0.9em;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: rgba(254, 1, 110, 0.5); /* #FE016E at 50% opacity */
-    }
-    footer .left {
-      color: #fff;
-    }
-    footer .right {
-      color: #fff;
     }
     footer a {
       color: #fff;
-      margin: 0 10px;
       text-decoration: none;
+      margin: 0 10px;
     }
     footer a:hover {
       text-decoration: underline;
@@ -80,33 +75,21 @@
 <body>
 
   <header>
-    <h1>AI-Generated Video Ads as a Service</h1>
-    <p>Powerful daily video ads created automatically for your brand.</p>
-    <a class="button" href="https://buy.stripe.com/test_9AQ5m9403ePe640cMM" target="_blank">Get Started – €7000/month</a>
-    <a class="button" href="#learn-more">Learn More</a>
+    <img src="ivdy-media-logo-transparent.ico" alt="IVDY Media Logo">
+    <h1>IVDY Media - AI Generated Video Ads as a Service</h1>
   </header>
 
-  <section id="learn-more">
-    <h2>What You Get</h2>
-    <ul>
-      <li>✅ Up to 15 video ad creatives (30–90 seconds each)</li>
-      <li>✅ A/B tested variations for different platforms</li>
-      <li>✅ Voiceovers in 30+ languages</li>
-      <li>✅ Stock footage + custom branding</li>
-      <li>✅ Scriptwriting, editing, motion graphics</li>
-      <li>✅ Performance-based optimization</li>
-      <li>✅ 72h turnaround</li>
-      <li>✅ Dedicated account manager</li>
-    </ul>
+  <section>
+    <h2>Unser Angebot</h2>
+    <p>Wir bieten maßgeschneiderte, KI-generierte Videoanzeigen für Ihr Unternehmen, um Ihre Marke schnell und effektiv zu fördern. Profitieren Sie von unserem innovativen Service, der Ihre Werbung auf die nächste Stufe hebt!</p>
+    <p><strong>Preis:</strong> €7000 pro Monat</p>
+    <a href="https://buy.stripe.com/test_9AQ5m9403ePe640cMM" class="button">Jetzt kaufen</a>
   </section>
 
   <footer>
-    <div class="left">© 2025 IVDY Media. All rights reserved.</div>
-    <div class="right">
-      <a href="https://ivdymedia.github.io/impressum">Impressum</a> |
-      <a href="https://ivdymedia.github.io/agb">Allgemeinen Geschäftsbedingungen (AGB)</a> |
-      <a href="https://ivdymedia.github.io/datenschutz">Datenschutz</a>
-    </div>
+    <a href="https://ivdymedia.github.io/impressum" target="_blank">Impressum</a> |
+    <a href="https://ivdymedia.github.io/agb" target="_blank">AGB</a> |
+    <a href="https://ivdymedia.github.io/datenschutz" target="_blank">Datenschutz</a>
   </footer>
 
 </body>
