@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IVDY Media – KI-Chatbot Angebote</title>
+    <title data-translate-key="pageTitle">IVDY Media – KI-Chatbot Angebote</title>
     
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-    <!-- Styles -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,68 +17,144 @@
         }
         header {
             text-align: center;
-            background-color: #333;
+            background-color: #333; /* Dunkler Header-Hintergrund */
             color: #fff;
-            padding: 20px 0;
+            padding: 15px 0; /* Etwas weniger Padding */
+            position: relative; /* Für absolute Positionierung des Sprachwählers */
         }
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .logo {
+             width: 130px; /* Etwas kleineres Logo */
+             margin-bottom: 10px;
+        }
+
+        /* Sprachauswahl Styling */
+        .language-selector {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 12px;
+            color: #ccc; /* Hellere Farbe für Label */
+        }
+        .language-selector label {
+            margin-right: 5px;
+            display: none; /* Label ausblenden, da Select oft selbsterklärend ist */
+        }
+        .language-selector select {
+            background-color: #555;
+            color: #fff;
+            border: 1px solid #777;
+            border-radius: 4px;
+            padding: 3px 5px;
+            font-size: 12px;
+        }
+
+
         .intro {
             text-align: center;
             margin: 30px;
             padding: 10px;
-            font-size: 18px;
+            font-size: 17px; /* Etwas kleiner */
+            line-height: 1.6;
         }
+        .intro h3 {
+             margin-top: 25px;
+             color: #ff006e;
+        }
+         .intro ul {
+             list-style: none; /* Keine Aufzählungszeichen */
+             padding: 0;
+             text-align: left; /* Linksbündig für bessere Lesbarkeit */
+             display: inline-block; /* Zentriert den Block */
+             max-width: 600px; /* Begrenzt die Breite der Liste */
+         }
+         .intro ul li {
+              margin-bottom: 8px;
+         }
+         .intro .highlight { /* Für den englischen Satz */
+             font-weight: bold;
+             color: #555;
+             display: block;
+             margin-top: 15px;
+         }
+
         .package-container {
             display: flex;
-            justify-content: space-around;
+            justify-content: center; /* Zentriert die Pakete */
             margin: 20px;
-            gap: 20px;
+            gap: 25px; /* Etwas mehr Abstand */
             flex-wrap: wrap;
         }
         .package {
             background-color: #fff;
             border: 1px solid #ddd;
             border-radius: 10px;
-            padding: 20px;
-            width: 30%;
+            padding: 25px; /* Mehr Padding */
+            width: 28%; /* Angepasste Breite */
             min-width: 280px;
+            max-width: 320px; /* Max Breite hinzugefügt */
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Etwas stärkerer Schatten */
+            display: flex; /* Flexbox für innere Ausrichtung */
+            flex-direction: column; /* Elemente untereinander */
+            justify-content: space-between; /* Buttons unten ausrichten */
         }
         .package h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
+            font-size: 22px; /* Angepasste Größe */
+            margin-top: 0; /* Kein oberer Margin */
+            margin-bottom: 15px; /* Mehr Abstand nach unten */
             color: #ff006e;
         }
-        .package p {
-            font-size: 16px;
+        .package p { /* Beschreibung */
+            font-size: 15px; /* Angepasste Größe */
             margin-bottom: 20px;
+            flex-grow: 1; /* Nimmt verfügbaren Platz ein */
+            line-height: 1.5;
         }
         .price {
             font-size: 22px;
             font-weight: bold;
             color: #ff006e;
+            margin-bottom: 15px; /* Abstand zum Button */
         }
         .buy-button {
             background-color: #ff006e;
             color: #fff;
-            padding: 10px 20px;
+            padding: 12px 25px; /* Größerer Button */
             border: none;
             border-radius: 5px;
             text-transform: uppercase;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 15px; /* Angepasste Größe */
             transition: background-color 0.3s;
+            display: inline-block; /* Für korrekte Darstellung in Link */
         }
         .buy-button:hover {
             background-color: #c40056;
         }
         .offer-details {
             background-color: #fff;
-            padding: 20px;
-            margin: 20px;
+            padding: 25px; /* Mehr Padding */
+            margin: 30px; /* Mehr Abstand */
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+         .offer-details h3 {
+             margin-top: 0;
+             color: #ff006e;
+         }
+         .offer-details ul {
+              padding-left: 20px; /* Einrückung für Liste */
+              margin-bottom: 15px;
+         }
+         .offer-details ul li {
+             margin-bottom: 8px;
+         }
+
         footer {
             background-color: #ff006e;
             color: #fff;
@@ -99,96 +173,271 @@
         footer a:hover {
             text-decoration: underline;
         }
+         /* Responsivität für Pakete */
+         @media (max-width: 992px) {
+             .package {
+                 width: 45%; /* Zwei pro Zeile auf Tablets */
+             }
+         }
+         @media (max-width: 600px) {
+             .package {
+                 width: 80%; /* Eines pro Zeile auf Handys */
+                 max-width: none;
+             }
+             .package-container {
+                  margin: 10px;
+                  gap: 15px;
+             }
+             .intro, .offer-details {
+                  margin: 20px;
+                  padding: 15px;
+             }
+             footer {
+                  flex-direction: column; /* Untereinander im Footer */
+                  text-align: center;
+                  padding: 20px 15px;
+             }
+             footer span:first-child {
+                  margin-bottom: 10px;
+             }
+             footer a {
+                  margin: 5px 10px;
+             }
+             .language-selector {
+                 position: static; /* Nicht mehr absolut positioniert */
+                 margin-top: 10px; /* Abstand nach oben */
+             }
+             .header-content {
+                 padding-bottom: 10px; /* Platz für Sprachwahl schaffen */
+             }
+         }
+
     </style>
 </head>
 <body>
 
 <header>
-    <img src="ivdy-media-logo-transparent.ico" alt="IVDY Media Logo" style="width: 150px;">
-    <h1>Unsere KI-Chatbot-Angebote</h1>
+    <div class="header-content">
+        <img src="ivdy-media-logo-transparent.ico" alt="IVDY Media Logo" class="logo">
+        <h1 data-translate-key="mainHeading">Unsere KI-Chatbot-Angebote</h1>
+    </div>
+     <div class="language-selector">
+      <label for="lang-select" data-translate-key="languageLabel">Sprache:</label>
+      <select id="lang-select">
+        <option value="de">Deutsch</option>
+        <option value="en">English</option>
+        </select>
+    </div>
 </header>
 
 <main>
     <section class="intro">
-        <p>
+        <p data-translate-key="introP1">
             IVDY Media präsentiert eine revolutionäre Lösung zur Verbesserung der Kundeninteraktion, Automatisierung von Buchungen und Stärkung Ihrer Markenpräsenz. <br>
             Wir entwickeln maßgeschneiderte KI-gestützte Chatbots, die sich nahtlos mit Instagram, TikTok Messenger, WhatsApp und weiteren Plattformen integrieren – für 24/7 Luxus-Kundenservice. <br>
             Mit Unterstützung in Englisch, Spanisch, Deutsch und Türkisch begleiten unsere Bots Ihre Kunden von der ersten Nachricht bis zur Buchung – professionell, charmant und effizient.
         </p>
-        <p><strong>Let your brand speak to your audience in their language and match the exclusivity of your service with intelligent automation.</strong></p>
-        <h3>Warum es perfekt für Ihr Unternehmen ist:</h3>
-        <p>
-            • 24/7 Premium-Antworten auf Instagram, TikTok Messenger, WhatsApp & mehr<br>
-            • Natürliche Gespräche auf Englisch, Spanisch, Deutsch und Türkisch<br>
-            • Lead-Erfassung, Angebotserstellung und VIP-Support – vollautomatisiert<br>
-            • Nahtlose Integration mit CRM, Buchungssystemen & Zahlungsplattformen<br>
-            • Individuelle Tonalität & Persönlichkeit passend zur Marke
-        </p>
-        <h3>Wählen Sie Ihr Paket:</h3>
+        <p class="highlight" data-translate-key="introP2"><strong>Let your brand speak to your audience in their language and match the exclusivity of your service with intelligent automation.</strong></p>
+        <h3 data-translate-key="whyHeader">Warum es perfekt für Ihr Unternehmen ist:</h3>
+        <ul>
+            <li data-translate-key="whyPoint1">• 24/7 Premium-Antworten auf Instagram, TikTok Messenger, WhatsApp & mehr</li>
+            <li data-translate-key="whyPoint2">• Natürliche Gespräche auf Englisch, Spanisch, Deutsch und Türkisch</li>
+            <li data-translate-key="whyPoint3">• Lead-Erfassung, Angebotserstellung und VIP-Support – vollautomatisiert</li>
+            <li data-translate-key="whyPoint4">• Nahtlose Integration mit CRM, Buchungssystemen & Zahlungsplattformen</li>
+            <li data-translate-key="whyPoint5">• Individuelle Tonalität & Persönlichkeit passend zur Marke</li>
+        </ul>
+        <h3 data-translate-key="choosePackageHeader">Wählen Sie Ihr Paket:</h3>
     </section>
 
     <section class="package-container">
-        <!-- Starter Bot -->
         <div class="package">
-            <h2>Starter Bot</h2>
-            <p>Ein funktionaler KI-Chatbot zur Automatisierung einfacher Kundenanfragen und FAQs auf Ihrer Website.</p>
+            <h2 data-translate-key="starterTitle">Starter Bot</h2>
+            <p data-translate-key="starterDesc">Ein funktionaler KI-Chatbot zur Automatisierung einfacher Kundenanfragen und FAQs auf Ihrer Website.</p>
             <div class="price">€10.216,63</div>
             <a href="https://buy.stripe.com/bIY3flc0tdlH8jS00T" target="_blank">
-                <button class="buy-button">Jetzt kaufen</button>
+                <button class="buy-button" data-translate-key="buyNowButton">Jetzt kaufen</button>
             </a>
         </div>
 
-        <!-- Business Bot -->
         <div class="package">
-            <h2>Business Bot</h2>
-            <p>Ein intelligenter KI-Chatbot mit CRM/API-Integration und plattformübergreifender Kundenkommunikation.</p>
+            <h2 data-translate-key="businessTitle">Business Bot</h2>
+            <p data-translate-key="businessDesc">Ein intelligenter KI-Chatbot mit CRM/API-Integration und plattformübergreifender Kundenkommunikation.</p>
             <div class="price">€25.123,16</div>
             <a href="https://buy.stripe.com/9AQ4jp0hLchD1Vu4ha" target="_blank">
-                <button class="buy-button">Jetzt kaufen</button>
-            </a>
+                <button class="buy-button" data-translate-key="buyNowButton">Jetzt kaufen</button> </a>
         </div>
 
-        <!-- Enterprise AI Bot -->
         <div class="package">
-            <h2>Enterprise AI Bot</h2>
-            <p>Ein individuell entwickelter, mehrsprachiger KI-Chatbot mit High-End-Features für höchste Ansprüche.</p>
+            <h2 data-translate-key="enterpriseTitle">Enterprise AI Bot</h2>
+            <p data-translate-key="enterpriseDesc">Ein individuell entwickelter, mehrsprachiger KI-Chatbot mit High-End-Features für höchste Ansprüche.</p>
             <div class="price">€75.213,16</div>
             <a href="https://buy.stripe.com/fZe17dggJ95ras06pj" target="_blank">
-                <button class="buy-button">Jetzt kaufen</button>
-            </a>
+                <button class="buy-button" data-translate-key="buyNowButton">Jetzt kaufen</button> </a>
         </div>
     </section>
 
     <section class="offer-details">
-        <h3>Details zum Angebot:</h3>
+        <h3 data-translate-key="offerDetailsHeader">Details zum Angebot:</h3>
         <ul>
-            <li>Lieferzeit: 14 Tage</li>
-            <li>3 Revisionen inklusive</li>
-            <li>Funktionaler KI-Chatbot</li>
-            <li>KI-Modell Feinabstimmung</li>
-            <li>Chatbot-Integration</li>
-            <li>Quellcode (auf Anfrage)</li>
-            <li>Social Media Integration: TikTok, Facebook, Instagram, WhatsApp uvm. (je €5.000 Aufpreis pro Plattform)</li>
+            <li data-translate-key="offerDetail1">Lieferzeit: 14 Tage</li>
+            <li data-translate-key="offerDetail2">3 Revisionen inklusive</li>
+            <li data-translate-key="offerDetail3">Funktionaler KI-Chatbot</li>
+            <li data-translate-key="offerDetail4">KI-Modell Feinabstimmung</li>
+            <li data-translate-key="offerDetail5">Chatbot-Integration</li>
+            <li data-translate-key="offerDetail6">Quellcode (auf Anfrage)</li>
+            <li data-translate-key="offerDetail7">Social Media Integration: TikTok, Facebook, Instagram, WhatsApp uvm. (je €5.000 Aufpreis pro Plattform)</li>
         </ul>
 
-        <h3>Warum IVDY Media?</h3>
+        <h3 data-translate-key="whyIvdyHeader">Warum IVDY Media?</h3>
         <ul>
-            <li>7+ Jahre Erfahrung in individueller KI- & Chatbot-Entwicklung</li>
-            <li>Integration über mehrere Plattformen mit modernster Technologie</li>
+            <li data-translate-key="whyIvdy1">7+ Jahre Erfahrung in individueller KI- & Chatbot-Entwicklung</li>
+            <li data-translate-key="whyIvdy2">Integration über mehrere Plattformen mit modernster Technologie</li>
         </ul>
 
-        <p>Interessiert an einer maßgeschneiderten Lösung für Ihr Business? <br><strong>Wählen Sie einfach das passende Paket – und wir legen los!</strong></p>
+        <p data-translate-key="interestedP1">Interessiert an einer maßgeschneiderten Lösung für Ihr Business?</p>
+        <p><strong data-translate-key="interestedP2">Wählen Sie einfach das passende Paket – und wir legen los!</strong></p>
     </section>
 </main>
 
 <footer>
-    <span>© 2025 IVDY Media – Alle Rechte vorbehalten.</span>
+    <span data-translate-key="footerCopyright">© 2025 IVDY Media – Alle Rechte vorbehalten.</span>
     <span>
-        <a href="impressum.html">Impressum</a>
-        <a href="agb.html">AGB</a>
-        <a href="datenschutz.html">Datenschutz</a>
+        <a href="impressum.html" data-translate-key="footerImpressum">Impressum</a>
+        <a href="agb.html" data-translate-key="footerAGB">AGB</a>
+        <a href="datenschutz.html" data-translate-key="footerDatenschutz">Datenschutz</a>
     </span>
 </footer>
+
+<script>
+    // 1. Übersetzungsdaten (Fügen Sie hier Ihre Übersetzungen hinzu)
+    const translations = {
+        'de': {
+            pageTitle: 'IVDY Media – KI-Chatbot Angebote',
+            languageLabel: 'Sprache:',
+            mainHeading: 'Unsere KI-Chatbot-Angebote',
+            introP1: 'IVDY Media präsentiert eine revolutionäre Lösung zur Verbesserung der Kundeninteraktion, Automatisierung von Buchungen und Stärkung Ihrer Markenpräsenz. <br>Wir entwickeln maßgeschneiderte KI-gestützte Chatbots, die sich nahtlos mit Instagram, TikTok Messenger, WhatsApp und weiteren Plattformen integrieren – für 24/7 Luxus-Kundenservice. <br>Mit Unterstützung in Englisch, Spanisch, Deutsch und Türkisch begleiten unsere Bots Ihre Kunden von der ersten Nachricht bis zur Buchung – professionell, charmant und effizient.',
+            introP2: '<strong>Let your brand speak to your audience in their language and match the exclusivity of your service with intelligent automation.</strong>', // Englisch im Original
+            whyHeader: 'Warum es perfekt für Ihr Unternehmen ist:',
+            whyPoint1: '• 24/7 Premium-Antworten auf Instagram, TikTok Messenger, WhatsApp & mehr',
+            whyPoint2: '• Natürliche Gespräche auf Englisch, Spanisch, Deutsch und Türkisch',
+            whyPoint3: '• Lead-Erfassung, Angebotserstellung und VIP-Support – vollautomatisiert',
+            whyPoint4: '• Nahtlose Integration mit CRM, Buchungssystemen & Zahlungsplattformen',
+            whyPoint5: '• Individuelle Tonalität & Persönlichkeit passend zur Marke',
+            choosePackageHeader: 'Wählen Sie Ihr Paket:',
+            starterTitle: 'Starter Bot',
+            starterDesc: 'Ein funktionaler KI-Chatbot zur Automatisierung einfacher Kundenanfragen und FAQs auf Ihrer Website.',
+            businessTitle: 'Business Bot',
+            businessDesc: 'Ein intelligenter KI-Chatbot mit CRM/API-Integration und plattformübergreifender Kundenkommunikation.',
+            enterpriseTitle: 'Enterprise AI Bot',
+            enterpriseDesc: 'Ein individuell entwickelter, mehrsprachiger KI-Chatbot mit High-End-Features für höchste Ansprüche.',
+            buyNowButton: 'Jetzt kaufen',
+            offerDetailsHeader: 'Details zum Angebot:',
+            offerDetail1: 'Lieferzeit: 14 Tage',
+            offerDetail2: '3 Revisionen inklusive',
+            offerDetail3: 'Funktionaler KI-Chatbot',
+            offerDetail4: 'KI-Modell Feinabstimmung',
+            offerDetail5: 'Chatbot-Integration',
+            offerDetail6: 'Quellcode (auf Anfrage)',
+            offerDetail7: 'Social Media Integration: TikTok, Facebook, Instagram, WhatsApp uvm. (je €5.000 Aufpreis pro Plattform)',
+            whyIvdyHeader: 'Warum IVDY Media?',
+            whyIvdy1: '7+ Jahre Erfahrung in individueller KI- & Chatbot-Entwicklung',
+            whyIvdy2: 'Integration über mehrere Plattformen mit modernster Technologie',
+            interestedP1: 'Interessiert an einer maßgeschneiderten Lösung für Ihr Business?',
+            interestedP2: '<strong>Wählen Sie einfach das passende Paket – und wir legen los!</strong>',
+            footerCopyright: '© 2025 IVDY Media – Alle Rechte vorbehalten.',
+            footerImpressum: 'Impressum',
+            footerAGB: 'AGB',
+            footerDatenschutz: 'Datenschutz'
+        },
+        'en': {
+            // --- Englische Übersetzungen (Beispiele - bitte überprüfen/ergänzen) ---
+            pageTitle: 'IVDY Media – AI Chatbot Offers',
+            languageLabel: 'Language:',
+            mainHeading: 'Our AI Chatbot Offers',
+            introP1: 'IVDY Media presents a revolutionary solution to enhance customer interaction, automate bookings, and strengthen your brand presence. <br>We develop custom AI-powered chatbots that seamlessly integrate with Instagram, TikTok Messenger, WhatsApp, and other platforms – for 24/7 luxury customer service. <br>With support in English, Spanish, German, and Turkish, our bots guide your customers from the first message to booking – professionally, charmingly, and efficiently.',
+            introP2: '<strong>Let your brand speak to your audience in their language and match the exclusivity of your service with intelligent automation.</strong>', // Englisch bleibt Englisch
+            whyHeader: 'Why it\'s perfect for your business:',
+            whyPoint1: '• 24/7 premium responses on Instagram, TikTok Messenger, WhatsApp & more',
+            whyPoint2: '• Natural conversations in English, Spanish, German, and Turkish',
+            whyPoint3: '• Lead capture, quote generation, and VIP support – fully automated',
+            whyPoint4: '• Seamless integration with CRM, booking systems & payment platforms',
+            whyPoint5: '• Custom tonality & personality matching the brand',
+            choosePackageHeader: 'Choose Your Package:',
+            starterTitle: 'Starter Bot',
+            starterDesc: 'A functional AI chatbot to automate simple customer inquiries and FAQs on your website.',
+            businessTitle: 'Business Bot',
+            businessDesc: 'An intelligent AI chatbot with CRM/API integration and cross-platform customer communication.',
+            enterpriseTitle: 'Enterprise AI Bot',
+            enterpriseDesc: 'A custom-developed, multilingual AI chatbot with high-end features for the highest demands.',
+            buyNowButton: 'Buy Now',
+            offerDetailsHeader: 'Offer Details:',
+            offerDetail1: 'Delivery Time: 14 Days',
+            offerDetail2: '3 Revisions Included',
+            offerDetail3: 'Functional AI Chatbot',
+            offerDetail4: 'AI Model Fine-tuning',
+            offerDetail5: 'Chatbot Integration',
+            offerDetail6: 'Source Code (on request)',
+            offerDetail7: 'Social Media Integration: TikTok, Facebook, Instagram, WhatsApp etc. (€5,000 surcharge per platform)',
+            whyIvdyHeader: 'Why IVDY Media?',
+            whyIvdy1: '7+ years of experience in custom AI & chatbot development',
+            whyIvdy2: 'Integration across multiple platforms with state-of-the-art technology',
+            interestedP1: 'Interested in a custom solution for your business?',
+            interestedP2: '<strong>Simply choose the right package – and let\'s get started!</strong>',
+            footerCopyright: '© 2025 IVDY Media – All rights reserved.',
+            footerImpressum: 'Imprint',
+            footerAGB: 'Terms',
+            footerDatenschutz: 'Privacy Policy'
+        }
+        // Fügen Sie hier weitere Sprachen hinzu, z.B. 'es': { ... }, 'tr': { ... }
+    };
+
+    // 2. Elemente auswählen
+    const languageSelector = document.getElementById('lang-select');
+    // Wählt ALLE Elemente aus, die einen data-translate-key haben
+    const translatableElements = document.querySelectorAll('[data-translate-key]');
+
+    // 3. Funktion zum Setzen der Sprache
+    const setLanguage = (lang) => {
+        // Setzt das lang-Attribut des HTML-Tags
+        document.documentElement.lang = lang;
+
+        translatableElements.forEach(element => {
+            const key = element.getAttribute('data-translate-key');
+            const translation = translations[lang]?.[key]; // Sicherer Zugriff, falls Sprache/Key fehlt
+
+            if (translation) {
+                // Wenn das Element <title> ist, den Text ändern
+                if (element.tagName === 'TITLE') {
+                    document.title = translation;
+                } else {
+                     // WICHTIG: innerHTML verwenden, um <br> und <strong> Tags zu interpretieren
+                     // Vorsicht bei von Benutzern generiertem Inhalt wegen XSS! Hier sicher, da wir die Strings kontrollieren.
+                    element.innerHTML = translation;
+                }
+            } else {
+                // Fallback, falls keine Übersetzung gefunden wird (optional)
+                 console.warn(`Translation not found for key "${key}" in language "${lang}"`);
+                 // Hier könnten Sie den Text auf die Standardsprache zurücksetzen oder leer lassen
+            }
+        });
+
+         // Den aktuell ausgewählten Wert im Dropdown aktualisieren (falls die Sprache anders gesetzt wird)
+         if (languageSelector.value !== lang) {
+             languageSelector.value = lang;
+         }
+    };
+
+    // 4. Event Listener für das Dropdown
+    languageSelector.addEventListener('change', (event) => {
+        setLanguage(event.target.value);
+    });
+
+    // 5. Initiales Setzen der Sprache (optional, stellt sicher, dass Keys stimmen)
+    // Wenn Sie möchten, dass die Seite immer mit der Browsersprache oder einer gespeicherten Präferenz startet,
+    // müssten Sie hier komplexere Logik hinzufügen. Fürs Erste starten wir mit dem HTML-Standard (Deutsch).
+    // setLanguage('de'); // Nicht nötig, da HTML bereits auf Deutsch ist.
+
+</script>
 
 </body>
 </html>
